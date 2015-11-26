@@ -1,3 +1,8 @@
+" ctags
+set tags=~/prj/fds-ss/tags
+let g:tagbar_ctags_bin = "/Users/aleon/homebrew/Cellar/ctags/5.8_1/bin/ctags"
+let g:tagbar_compact = 1
+
 " pathogen
 filetype off
 call pathogen#infect()
@@ -40,12 +45,6 @@ set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
 
-" pymode
-let g:pymode_lint_on_write = 0
-let g:pymode_options_max_line_length = 109
-let g:pymode_rope_goto_definition_bind = "<C-]>"
-set nofoldenable
-
 " ag
 let g:ag_working_path_mode='r'
 
@@ -56,27 +55,23 @@ let mapleader = "\<Space>"
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>x :x<CR>
-" not for the faint of heart
 nnoremap <Leader>q :q!<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P :+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-
-nmap <Leader><Leader> V
-
+" auto-expanding visual
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" clipboard
 set clipboard=unnamed
 
 " stop that stupid window from popping up
 map q: :q
 
-" make ctrlp faster
+" mouse
+set mouse=a
+
+" make ctrlp use ag
 let g:ctrlp_use_caching = 0
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
